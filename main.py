@@ -82,7 +82,14 @@ def read_item(titulo: str):
 
 #Se ingresa el nombre de un actor que se encuentre dentro de un dataset debiendo devolver el éxito del mismo medido a través del retorno.
 # Además, la cantidad de películas que en las que ha participado y el promedio de retorno. La definición no deberá considerar directores.
-
+@app.get('/get_actor/{nombre_actor}')
+def read_item(nombre_actor: str):
+    actor = dfc[dfc['actores'] == nombre_actor]
+    total_peliculas = actor.shape[0]
+    retorno_total = actor['return'].sum()
+    promedio_return = actor['return'].mean()
+    mensaje = f'El actor {nombre_actor} participo de {total_peliculas} con un retorno de {retorno_total} y un promedio de {promedio_return:2f} por pelicula.'
+    return {'mensaje': mensaje}
 
 
 #Se ingresa el nombre de un director que se encuentre dentro de un dataset debiendo devolver el éxito del mismo medido a través del retorno. 
