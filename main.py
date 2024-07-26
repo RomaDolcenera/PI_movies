@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from functions import buscames
 
 dfm = pd.read_csv("/Datasets_limpios/movies_dataset_clean.csv.csv",sep = ',', encoding="UTF-8", low_memory=False)
 dfc = pd.read_csv("/Datasets_limpios.csv/credits_dataset_clean.csv")
@@ -17,15 +18,28 @@ def read_root():
 # en la totalidad del dataset.
 @app.get("/cantidad_filmaciones_mes/{mes}")
 def read_item(mes: str):
-    name_mes = mes.lower()
-    result_filter = dfm.loc[dfm['release_month'].str.lower().apply(lambda x: name_mes in x)]
-    if result_filter.empty:
-        return{'error: El mes ingresado no se encuentra en la base de datos. Ingrese un mes valido en Español'}
-    else:
-        print(result_filter)
+    mes_numero = buscames(mes)
+    if mes_numero is None:
+        return {'error': 'El mes ingresado no se encuentra en la base de datos. Ingrese un mes válido en Español'}
+    
+    result_filter = dfm[dfm['release_month'] == mes_numero]
+    cantidad_peliculas = len(result_filter)
+    
+    return {'cantidad_peliculas': cantidad_peliculas}
 
 #Se ingresa un día en idioma Español. Debe devolver la cantidad de películas que fueron estrenadas en día consultado en
 # la totalidad del dataset.
+@app.get("/cantidad_filmaciones_dia/{dia}")
+def read_item(dia: str):
+    dia_numero = buscadias(mes)
+    if dia_numero is None:
+        return {'error': 'El dia ingresado no se encuentra en la base de datos. Ingrese un dia válido'}
+    
+    result_filter = dfm[dfm['release_month'] == mes_numero]
+    cantidad_peliculas = len(result_filter)
+    
+    return {'cantidad_peliculas': cantidad_peliculas}
+
 
 #Se ingresa el título de una filmación esperando como respuesta el título, el año de estreno y el score.
 
