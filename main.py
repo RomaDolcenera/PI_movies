@@ -2,17 +2,12 @@ from fastapi import FastAPI
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
+from functions import buscames
 
 dfm = pd.read_csv("./Datasets_limpios/movies_dataset_clean.csv")
 dfc = pd.read_csv("./Datasets_limpios/credits_dataset_clean.csv")
-from functions import buscames
 
 app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"mensaje": "Bienvenido a la API de películas"}
 
 #Se ingresa un mes en idioma Español. Debe devolver la cantidad de películas que fueron estrenadas en el mes consultad
 # en la totalidad del dataset.
@@ -90,7 +85,7 @@ def read_item(nombre_actor: str):
         film_count  = movies.shape[0]
         total_gross_return  = movies['revenue'].sum()
         average_gross_return  = total_gross_return / film_count if film_count > 0 else 0
-        mensaje = f"El actor Tom Cruise ha participado de {film_count} cantidad de filmaciones, el mismo ha conseguido un retorno de {total_gross_return} con un promedio de {average_gross_return} por filmación"
+        mensaje = f"El actor {nombre_actor} ha participado de {film_count} cantidad de filmaciones, el mismo ha conseguido un retorno de {total_gross_return} con un promedio de {average_gross_return} por filmación"
         return {'mensaje': mensaje}
             
 
