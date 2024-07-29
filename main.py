@@ -113,7 +113,7 @@ def read_item(director: str):
             "Lista de Peliculas": list_movies
         }
         
-# Machine Learning
+# Machine Learning code
 def get_recommendations(titulo, dfm):
     tfidf_vectorizer = TfidfVectorizer()
     tfidf_matrix = tfidf_vectorizer.fit_transform(dfm['title'])
