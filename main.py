@@ -37,7 +37,7 @@ def read_item(dia: str):
         return {'mensaje':mensaje}
 
 #Se ingresa el título de una filmación esperando como respuesta el título, el año de estreno y el score.
-@app.get('/titulo_de_la_filmacion/{title}')
+@app.get('/score_titulo/{title}')
 def read_item(title: str):
     title = title.lower()
     print(f"Received title: {title}")  
@@ -54,7 +54,7 @@ def read_item(title: str):
 #Se ingresa el título de una filmación esperando como respuesta el título, la cantidad de votos y el valor promedio de las votaciones.
 # La misma variable deberá de contar con al menos 2000 valoraciones, caso contrario, debemos contar con un mensaje avisando que no cumple
 # esta condición y que por ende, no se devuelve ningun valor.
-@app.get('/titulo_filmacion/{titulo}')
+@app.get('/votos_titulo/{titulo}')
 def read_item(titulo: str):
     titulo = titulo.lower()
     result_filter = dfm.loc[dfm['title'].str.lower() == titulo]
