@@ -13,8 +13,9 @@ app = FastAPI()
 # en la totalidad del dataset.
 @app.get("/cantidad_filmaciones_mes/{mes}")
 def read_item(mes: str):
-    mes_numero = buscames(mes)
-    if mes_numero is None:
+    try:
+        mes_numero = buscames(mes.lower())
+    except ValueError:
         return {'error': 'El mes ingresado no se encuentra en la base de datos. Ingrese un mes válido en Español'}
     
     result_filter = dfm[dfm['release_month'] == mes_numero]
@@ -24,6 +25,22 @@ def read_item(mes: str):
 
 #Se ingresa un día en idioma Español. Debe devolver la cantidad de películas que fueron estrenadas en día consultado en
 # la totalidad del dataset.
+@app.get("/cantidad_filmaciones_dia/{dia}")
+@app.get("/cantidad_filmaciones_dia/{dia}")
+def read_item(dia: str):
+    name_dia = dia.lower()
+    dfm['day_of_week'] = dfm['day_of_week'].str.lower()
+    result_filter = dfm.loc[dfm['day_of_week'] == name_dia]
+    
+    if result_filter.empty:
+        return {'error': 'El dia ingresado no se encuentra en la base de datos, ingrese un dia en Español.'}
+    
+    else:
+        cantidad_peliculas = result_filter.shape[0]
+        mensaje = f'{cantidad_peliculas} peliculas fueron estrenadas en el dia {dia}'
+        return {'mensaje': mensaje}
+
+#Se ingresa el título de una filmación esperando como respuesta el título, el año de estreno y el score.
 @app.get("/cantidad_filmaciones_dia/{dia}")
 def read_item(dia: str):
     name_dia = dia.lower()
@@ -35,21 +52,6 @@ def read_item(dia: str):
         cantidad_peliculas = result_filter.shape[0]
         mensaje = f'{cantidad_peliculas} peliculas fueron estrenadas en el dia {dia}'
         return {'mensaje':mensaje}
-
-#Se ingresa el título de una filmación esperando como respuesta el título, el año de estreno y el score.
-@app.get('/score_titulo/{title}')
-def read_item(title: str):
-    title = title.lower()
-    print(f"Received title: {title}")  
-    result_filter = dfm.loc[dfm['title'].str.lower() == title]
-    if result_filter.empty:
-        print("No matching film found")  
-        return {'error': 'La pelicula ingresada no se encuentra en la base de datos, pruebe con otro nombre'}
-    else:
-        release_year = result_filter['release_year'].values[0]
-        popularity = result_filter['popularity'].values[0]
-        mensaje = f'La filmacion {title} fue estrenada en el año {release_year} con un score de {popularity}'
-        return {'mensaje': mensaje}
     
 #Se ingresa el título de una filmación esperando como respuesta el título, la cantidad de votos y el valor promedio de las votaciones.
 # La misma variable deberá de contar con al menos 2000 valoraciones, caso contrario, debemos contar con un mensaje avisando que no cumple
@@ -78,8 +80,10 @@ def read_item(titulo: str):
 @app.get('/get_actor/{nombre_actor}')
 def read_item(nombre_actor: str):
     actor = dfc.loc[dfc['actores'].str.lower().apply(lambda x: nombre_actor.lower() in x), 'id']
+    
     if actor.empty:
         return f"Error: No se encontraron coincidencias para el actor {nombre_actor}."
+    
     else:
         movies = dfm[dfm.id.isin(actor)]
         film_count  = movies.shape[0]
@@ -95,8 +99,10 @@ def read_item(nombre_actor: str):
 def read_item(director: str):
     name_director = director.lower()
     result_filter = dfc.loc[dfc['directores'].str.lower().apply(lambda x: name_director in x)]
+    
     if result_filter.empty:
         return {"error": "El director ingresado no se encuentra en la base de datos, pruebe con el nombre completo o ingrese otro director"}
+    
     else:
         id_movies = result_filter['id'].to_list()
         movies_director = dfm[dfm['id'].isin(id_movies)]
@@ -107,24 +113,32 @@ def read_item(director: str):
             "Lista de Peliculas": list_movies
         }
         
+# Machine Learning
+def get_recommendations(titulo, dfm):
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform(dfm['title'])
+    search_vector = tfidf_vectorizer.transform([titulo])
+    similar_score = cosine_similarity(search_vector, tfidf_matrix).flatten()
+    dfm['score'] = similar_score
+    dfm = dfm.sort_values(by='score', ascending=False)
+    
+    # Excluir la película buscada de los resultados
+    dfm = dfm[dfm['title'].str.lower() != titulo.lower()]
+    
+    # Obtener los títulos de las 5 películas más similares
+    top_5_titles = dfm.head(5)['title'].tolist()
+    return top_5_titles
+
 @app.get("/recomendacion/{titulo}")
 def read_item(titulo: str):
-    def get_recommendations(titulo, dfm):
-        tfidf_vectorizer = TfidfVectorizer()
-        tfidf_matrix = tfidf_vectorizer.fit_transform(dfm['title'])
-        search_vector = tfidf_vectorizer.transform([titulo])
-        similar_score = cosine_similarity(search_vector, tfidf_matrix).flatten()
-        dfm['score'] = similar_score
-        dfm = dfm.sort_values(by='score', ascending=False)
-        result_dict = {}
-        for index in range(5):
-            result_dict[dfm.iloc[index]['title']] = dfm.iloc[index]['score']
-        return result_dict
+    # Verificar si la película existe en la base de datos
+    if titulo.lower() not in dfm['title'].str.lower().values:
+        return {"error": "La pelicula ingresada no se encuentra en la base de datos, pruebe con el nombre completo o ingrese otra pelicula"}
 
     recommend = get_recommendations(titulo, dfm)
 
-    if len(recommend) < 0:
-        return {"error": "La pelicula ingresada no se encuentro en la base de datos, pruebe con el nombre completo o ingrese otra pelicula"}
+    if len(recommend) == 0:
+        return {"error": "No se encontraron recomendaciones para la película ingresada."}
     else:
         return {"Peliculas similares recomendadas": recommend}
     
