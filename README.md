@@ -1,4 +1,7 @@
-# Machine Learning Operations (MLOps)
+<h1 align=center>P.I Machine Learning Operations (MLOps)</h1>
+
+<p align="center"><img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300></p>
+
 
 ## *Introducción:*
 Como Data Scientist en una empresa de agregación de plataformas de streaming, fui asignado a desarrollar un sistema de recomendación de películas desde cero. Esta tarea era crucial para mejorar la experiencia del usuario y aumentar el engagement en nuestra plataforma.
@@ -51,6 +54,9 @@ Finalmente, desplegué el modelo en Render, asegurando su integración y funcion
 
 <a href="https://docs.google.com/spreadsheets/d/1QkHH5er-74Bpk122tJxy_0D49pJMIwKLurByOfmxzho/edit?gid=0#gid=0"><img src="https://cdn-icons-png.flaticon.com/512/5402/5402392.png" alt="Google Sheets" width="50" /></a>
 
+- El siguiente link te llevara al **Deploy en Render**:
+
+<a href="https://pi-movies-czqp.onrender.com"><img src="https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white" alt="Render" /></a>
 
 
 ## Desarrollo de la API:
@@ -67,15 +73,15 @@ Sistema de recomendacion de peliculas en ML:
 
 
 ## <u>Proyecto realizado por:</u>
-<p style="font-size:20px;">Marquez Rocio!</p>
-Estudiante de la carrera de Data Science.
-
-El siguiente link te llevara directamente a mi perfil de LinkedIn:
-
-<a href="https://www.linkedin.com/in/rociomarquezz/"><img src="https://static.vecteezy.com/system/resources/previews/018/910/721/non_2x/linkedin-logo-linkedin-symbol-linkedin-icon-free-free-vector.jpg" alt="LinkedIn" width="100" /></a>
 
 
-¡Muchas gracias por dedicarle tiempo a la lectura de mi primer proyecto! Saludos cordiales.
+
+**(Para contacto, haz click en la imagen y te llevara a mi perfil de LinkedIn.)**
+
+
+¡Muchas gracias por dedicarle tiempo a la lectura de mi primer proyecto! 
+
+Saludos cordiales.
 
 
 
