@@ -1,4 +1,7 @@
-# Machine Learning Operations (MLOps)
+<h1 align=center>P.I Machine Learning Operations (MLOps)</h1>
+
+<p align="center"><img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300></p>
+
 
 ## *Introducción:*
 Como Data Scientist en una empresa de agregación de plataformas de streaming, fui asignado a desarrollar un sistema de recomendación de películas desde cero. Esta tarea era crucial para mejorar la experiencia del usuario y aumentar el engagement en nuestra plataforma.
@@ -71,10 +74,15 @@ Sistema de recomendacion de peliculas en ML:
 
 ## <u>Proyecto realizado por:</u>
 
-<a href="https://www.linkedin.com/in/rociomarquezz/" target="_blank"><img src="https://github.com/RomaDolcenera/PI_movies/blob/master/IMG/Captura.JPG" alt="LinkedIn Profile"></a>
+<a href="https://www.linkedin.com/in/rociomarquezz/" target="_blank"><img src="https://github.com/RomaDolcenera/PI_movies/blob/master/IMG/Captura.JPG"></a>
 
-https://github.com/RomaDolcenera/PI_movies/blob/master/IMG/Captura.JPG
-¡Muchas gracias por dedicarle tiempo a la lectura de mi primer proyecto! Saludos cordiales.
+
+**Para contacto, haz click en la imagen y te llevara a mi perfil de LinkedIn.**
+
+
+¡Muchas gracias por dedicarle tiempo a la lectura de mi primer proyecto! 
+
+Saludos cordiales.
 
 
 
