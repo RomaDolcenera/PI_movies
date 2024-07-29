@@ -73,8 +73,8 @@ def read_item(titulo: str):
     
     return {'mensaje': mensaje}
 
-#Se ingresa el nombre de un actor que se encuentre dentro de un dataset debiendo devolver el éxito del mismo medido a través del retorno.
-# Además, la cantidad de películas que en las que ha participado y el promedio de retorno. La definición no deberá considerar directores.
+#Se ingresa el nombre de un actor que se encuentre dentro de un dataset debiendo devolver el éxito del mismo medido a través del retorno
+# Además, la cantidad de películas que en las que ha participado y el promedio de retorno. La definición no deberá considerar directores
 @app.get('/get_actor/{nombre_actor}')
 def read_item(nombre_actor: str):
     actor = dfc.loc[dfc['actores'].str.lower().apply(lambda x: nombre_actor.lower() in x), 'id']
