@@ -26,7 +26,6 @@ def read_item(mes: str):
 #Se ingresa un día en idioma Español. Debe devolver la cantidad de películas que fueron estrenadas en día consultado en
 # la totalidad del dataset.
 @app.get("/cantidad_filmaciones_dia/{dia}")
-@app.get("/cantidad_filmaciones_dia/{dia}")
 def read_item(dia: str):
     name_dia = dia.lower()
     dfm['day_of_week'] = dfm['day_of_week'].str.lower()
@@ -48,6 +47,7 @@ def read_item(dia: str):
     
     if result_filter.empty:
         return {'error': 'El dia ingresado no se encuentra en la base de datos, ingrese un dia en Español.'}
+    
     else:
         cantidad_peliculas = result_filter.shape[0]
         mensaje = f'{cantidad_peliculas} peliculas fueron estrenadas en el dia {dia}'
@@ -134,6 +134,7 @@ def read_item(titulo: str):
 
     if len(recommend) == 0:
         return {"error": "No se encontraron recomendaciones para la película ingresada."}
+    
     else:
         return {"Peliculas similares recomendadas": recommend}
     
