@@ -51,6 +51,9 @@ Finalmente, desplegué el modelo en Render, asegurando su integración y funcion
 
 <a href="https://docs.google.com/spreadsheets/d/1QkHH5er-74Bpk122tJxy_0D49pJMIwKLurByOfmxzho/edit?gid=0#gid=0"><img src="https://cdn-icons-png.flaticon.com/512/5402/5402392.png" alt="Google Sheets" width="50" /></a>
 
+- El siguiente link te llevara al **Deploy en Render**:
+
+<a href="https://pi-movies-czqp.onrender.com"><img src="https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white" alt="Render" /></a>
 
 
 ## Desarrollo de la API:
@@ -67,14 +70,10 @@ Sistema de recomendacion de peliculas en ML:
 
 
 ## <u>Proyecto realizado por:</u>
-<p style="font-size:20px;">Marquez Rocio!</p>
-Estudiante de la carrera de Data Science.
 
-El siguiente link te llevara directamente a mi perfil de LinkedIn:
+<a href="https://www.linkedin.com/in/rociomarquezz/" target="_blank"><img src="https://github.com/RomaDolcenera/PI_movies/blob/master/IMG/Captura.JPG" alt="LinkedIn Profile"></a>
 
-<a href="https://www.linkedin.com/in/rociomarquezz/"><img src="https://static.vecteezy.com/system/resources/previews/018/910/721/non_2x/linkedin-logo-linkedin-symbol-linkedin-icon-free-free-vector.jpg" alt="LinkedIn" width="100" /></a>
-
-
+https://github.com/RomaDolcenera/PI_movies/blob/master/IMG/Captura.JPG
 ¡Muchas gracias por dedicarle tiempo a la lectura de mi primer proyecto! Saludos cordiales.
 
 
