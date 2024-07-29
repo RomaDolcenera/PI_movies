@@ -74,10 +74,9 @@ Sistema de recomendacion de peliculas en ML:
 
 ## <u>Proyecto realizado por:</u>
 
-<a href="https://www.linkedin.com/in/rociomarquezz/" target="_blank"><img src="https://github.com/RomaDolcenera/PI_movies/blob/master/IMG/Captura.JPG"></a>
 
 
-**Para contacto, haz click en la imagen y te llevara a mi perfil de LinkedIn.**
+**(Para contacto, haz click en la imagen y te llevara a mi perfil de LinkedIn.)**
 
 
 ¡Muchas gracias por dedicarle tiempo a la lectura de mi primer proyecto! 
