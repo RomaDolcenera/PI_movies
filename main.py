@@ -121,17 +121,12 @@ def get_recommendations(titulo, dfm):
     similar_score = cosine_similarity(search_vector, tfidf_matrix).flatten()
     dfm['score'] = similar_score
     dfm = dfm.sort_values(by='score', ascending=False)
-    
-    # Excluir la película buscada de los resultados
     dfm = dfm[dfm['title'].str.lower() != titulo.lower()]
-    
-    # Obtener los títulos de las 5 películas más similares
     top_5_titles = dfm.head(5)['title'].tolist()
     return top_5_titles
 
 @app.get("/recomendacion/{titulo}")
 def read_item(titulo: str):
-    # Verificar si la película existe en la base de datos
     if titulo.lower() not in dfm['title'].str.lower().values:
         return {"error": "La pelicula ingresada no se encuentra en la base de datos, pruebe con el nombre completo o ingrese otra pelicula"}
 
