@@ -7,7 +7,7 @@ from functions import buscames
 dfm = pd.read_csv("./Datasets_limpios/movies_dataset_clean.csv")
 dfc = pd.read_csv("./Datasets_limpios/credits_dataset_clean.csv")
 
-app = FastAPI()
+app = FastAPI(docs_url="/")
 
 #Se ingresa un mes en idioma Español. Debe devolver la cantidad de películas que fueron estrenadas en el mes consultad
 # en la totalidad del dataset.
