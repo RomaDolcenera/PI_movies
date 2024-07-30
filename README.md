@@ -74,6 +74,7 @@ Sistema de recomendacion de peliculas en ML:
 ## Proyecto creado por:
 
 <a href="https://www.linkedin.com/in/rociomarquezz/"><img src="./imagenes/rm.jpg"/></a>
+
 **Haz click en la imagen para ver mi perfil en LinkedIn**
 
 ¡Muchas gracias por dedicarle tiempo a la lectura de mi primer proyecto! 
