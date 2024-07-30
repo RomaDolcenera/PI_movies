@@ -72,18 +72,12 @@ Sistema de recomendacion de peliculas en ML:
 - def recomendaciones(titulo): Debe ingresar el nombre de la pelicula y el sistema recomendara un total de 5 filmaciones recomendadas.
 
 
-## <u>Proyecto realizado por:</u>
-
-
-
-**(Para contacto, haz click en la imagen y te llevara a mi perfil de LinkedIn.)**
-
 
 ¡Muchas gracias por dedicarle tiempo a la lectura de mi primer proyecto! 
 
+
+
 Saludos cordiales.
-
-
 
 
 
