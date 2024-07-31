@@ -58,6 +58,9 @@ Finalmente, desplegué el modelo en Render, asegurando su integración y funcion
 
 <a href="https://pi-movies-czqp.onrender.com"><img src="https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white" alt="Render" /></a>
 
+- El siguiente link contiene el video del proyecto.
+
+https://drive.google.com/file/d/1I3MVILyCa831On9T7vKjXFUStvBzg-a5/view?usp=drive_link
 
 ## Desarrollo de la API:
 Se disponibilizan los datos ya trabajados en FastAPI, para su correcta comprension se detalla a continuacion los endpoints:
