@@ -93,7 +93,7 @@ def read_item(nombre_actor: str):
         return {'mensaje': mensaje}
             
 
-#Se ingresa el nombre de un director que se encuentre dentro de un dataset debiendo devolver el éxito del mismo medido a través del retorno. 
+#Se ingresa el nombre de un director que se encuentre dentro de un dataset debiendo devolver el éxito del mismo medido a través del retorno
 # Además, deberá devolver el nombre de cada película con la fecha de lanzamiento, retorno individual, costo y ganancia de la misma.
 @app.get("/get_director/{director}")
 def read_item(director: str):
@@ -114,6 +114,8 @@ def read_item(director: str):
         }
         
 # Machine Learning code
+# Para el modelo de ML utilice el algoritmo de TF-IDF (Term Frequency-Inverse Document Frequency) para vectorizar los títulos 
+# de las películas y luego calcular la similitud de coseno para encontrar títulos similares.
 def get_recommendations(titulo, dfm):
     tfidf_vectorizer = TfidfVectorizer()
     tfidf_matrix = tfidf_vectorizer.fit_transform(dfm['title'])
